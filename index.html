@@ -355,6 +355,77 @@
     .header-cta{padding:9px 14px; font-size:12.5px;}
   }
 
+  /* ---------- SIMULADOR / CALCULADORA DE DESCONTO ---------- */
+  .simulador-card{
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:40px;
+    align-items:center;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:40px 36px;
+    position:relative;
+    overflow:hidden;
+  }
+  .simulador-card::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 90% 0%, var(--accent-soft), transparent 60%);
+    pointer-events:none;
+  }
+  .simulador-slider-col, .simulador-results-col{position:relative; z-index:1;}
+  .sim-label{
+    display:block; font-size:13.5px; color:var(--text-muted); margin-bottom:10px;
+  }
+  .sim-value{
+    font-size:clamp(30px,4vw,42px); font-weight:800; color:var(--accent);
+    margin-bottom:22px; line-height:1;
+  }
+  .sim-range{
+    -webkit-appearance:none; appearance:none;
+    width:100%; height:6px; border-radius:999px;
+    background:var(--border-hover);
+    outline:none; cursor:pointer;
+  }
+  .sim-range::-webkit-slider-thumb{
+    -webkit-appearance:none; appearance:none;
+    width:24px; height:24px; border-radius:50%;
+    background:var(--accent);
+    border:4px solid var(--bg);
+    box-shadow:0 0 0 2px var(--accent), 0 4px 14px var(--accent-glow);
+    cursor:pointer;
+  }
+  .sim-range::-moz-range-thumb{
+    width:24px; height:24px; border-radius:50%;
+    background:var(--accent);
+    border:4px solid var(--bg);
+    box-shadow:0 0 0 2px var(--accent), 0 4px 14px var(--accent-glow);
+    cursor:pointer;
+  }
+  .sim-range::-moz-range-track{
+    height:6px; border-radius:999px; background:var(--border-hover);
+  }
+  .sim-range-labels{
+    display:flex; justify-content:space-between;
+    font-size:12px; color:var(--text-faint); margin-top:10px;
+  }
+  .simulador-results-col{display:flex; flex-direction:column; gap:16px;}
+  .sim-result{padding:22px 20px;}
+  .sim-result .qs-num{font-size:30px;}
+  .sim-result-highlight{
+    border-color:var(--accent);
+    background:linear-gradient(135deg, var(--accent-soft), var(--card) 70%);
+  }
+  .sim-cta-row{
+    margin-top:32px;
+    display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+  }
+  .sim-disclaimer{font-size:12.5px; color:var(--text-faint); max-width:420px;}
+  @media (max-width: 760px){
+    .simulador-card{grid-template-columns:1fr; padding:30px 24px;}
+  }
+
   /* ---------- APP / CASHBACK STRIP ---------- */
   .app-section{
     background:var(--bg-alt);
@@ -476,6 +547,7 @@
       <a href="#quem-somos">Quem Somos</a>
       <!--<a href="#trajetoria">Trajetória</a>-->
       <a href="#solucoes">Soluções</a>
+      <a href="#simulador">Simulador</a>
       <a href="#app">App</a>
       <!--<a href="#premios">Prêmios</a>-->
       <a href="#vamos-economizar">Fale Conosco</a>
@@ -722,6 +794,42 @@
     </div>
   </section>
 
+  <!-- ================= SIMULADOR / CALCULADORA DE DESCONTO ================= -->
+  <section class="section simulador-section" id="simulador">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Calculadora de Desconto</span>
+        <h2>Simule sua <em>economia anual</em> em segundos.</h2>
+        <p>Arraste o controle abaixo até o valor médio da sua conta de luz e veja, na hora, quanto você deixaria de pagar todos os meses com a iGreen.</p>
+      </div>
+
+      <div class="simulador-card reveal">
+        <div class="simulador-slider-col">
+          <label class="sim-label" for="simConta">Valor médio da sua conta de luz atual</label>
+          <div class="sim-value" id="simContaValor">R$ 600</div>
+          <input type="range" id="simConta" class="sim-range" min="100" max="2000" step="10" value="600" aria-describedby="simContaValor">
+          <div class="sim-range-labels"><span>R$ 100</span><span>R$ 2.000</span></div>
+        </div>
+
+        <div class="simulador-results-col">
+          <div class="qs-fact sim-result">
+            <div class="qs-num" id="simMensal">R$ 90</div>
+            <div class="qs-lbl">Economia estimada por mês</div>
+          </div>
+          <div class="qs-fact sim-result sim-result-highlight">
+            <div class="qs-num" id="simAnual">R$ 1.080</div>
+            <div class="qs-lbl">Economia estimada por ano</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-cta-row reveal">
+        <a href="#vamos-economizar" class="btn btn-primary">Quero ativar meu desconto</a>
+        <span class="sim-disclaimer">Simulação com base em desconto médio de 15%. O percentual final depende da sua distribuidora e perfil de consumo.</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= APP / CASHBACK ================= -->
   <section class="app-section section" id="app">
     <div class="wrap">
@@ -850,6 +958,32 @@
       btn.textContent = 'Link em breve';
     }
   });
+
+  // Calculadora de Desconto (simulador): atualiza os valores conforme o slider
+  (function(){
+    var TAXA_DESCONTO = 0.15; // 15% — ajuste aqui para mudar a taxa usada na simulação
+    var slider = document.getElementById('simConta');
+    var contaValorEl = document.getElementById('simContaValor');
+    var mensalEl = document.getElementById('simMensal');
+    var anualEl = document.getElementById('simAnual');
+    if (!slider) return;
+
+    function formatBRL(value){
+      return 'R$ ' + Math.round(value).toLocaleString('pt-BR');
+    }
+
+    function atualizarSimulador(){
+      var conta = parseFloat(slider.value) || 0;
+      var economiaMensal = conta * TAXA_DESCONTO;
+      var economiaAnual = economiaMensal * 12;
+      contaValorEl.textContent = formatBRL(conta);
+      mensalEl.textContent = formatBRL(economiaMensal);
+      anualEl.textContent = formatBRL(economiaAnual);
+    }
+
+    slider.addEventListener('input', atualizarSimulador);
+    atualizarSimulador();
+  })();
 
   // Botão "voltar ao topo": aparece após rolar a página
   var backToTop = document.getElementById('backToTop');
