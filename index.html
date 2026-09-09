@@ -546,8 +546,8 @@
     <nav class="top-nav">
       <a href="#quem-somos">Quem Somos</a>
       <!--<a href="#trajetoria">Trajetória</a>-->
-      <a href="#solucoes">Soluções</a>
       <a href="#simulador">Simulador</a>
+      <a href="#solucoes">Soluções</a>
       <a href="#app">App</a>
       <!--<a href="#premios">Prêmios</a>-->
       <a href="#vamos-economizar">Fale Conosco</a>
@@ -635,6 +635,42 @@
     </div>
   </section>
   -->
+
+  <!-- ================= SIMULADOR / CALCULADORA DE DESCONTO ================= -->
+  <section class="section simulador-section" id="simulador">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Calculadora de Desconto</span>
+        <h2>Simule sua <em>economia anual</em> em segundos.</h2>
+        <p>Arraste o controle abaixo até o valor médio da sua conta de luz e veja, na hora, quanto você deixaria de pagar todos os meses com a iGreen.</p>
+      </div>
+
+      <div class="simulador-card reveal">
+        <div class="simulador-slider-col">
+          <label class="sim-label" for="simConta">Valor médio da sua conta de luz atual</label>
+          <div class="sim-value" id="simContaValor">R$ 600</div>
+          <input type="range" id="simConta" class="sim-range" min="100" max="2000" step="10" value="600" aria-describedby="simContaValor">
+          <div class="sim-range-labels"><span>R$ 100</span><span>R$ 2.000</span></div>
+        </div>
+
+        <div class="simulador-results-col">
+          <div class="qs-fact sim-result">
+            <div class="qs-num" id="simMensal">R$ 90</div>
+            <div class="qs-lbl">Economia estimada por mês</div>
+          </div>
+          <div class="qs-fact sim-result sim-result-highlight">
+            <div class="qs-num" id="simAnual">R$ 1.080</div>
+            <div class="qs-lbl">Economia estimada por ano</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-cta-row reveal">
+        <!-- <a href="#vamos-economizar" class="btn btn-primary">Quero ativar meu desconto</a> -->
+        <span class="sim-disclaimer">Simulação com base em desconto médio de 15%. O percentual final depende da sua distribuidora e perfil de consumo.</span>
+      </div>
+    </div>
+  </section>
 
   <!-- ================= SOLUÇÕES ================= -->
   <section class="section" id="solucoes">
@@ -791,42 +827,6 @@
         </div>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ================= SIMULADOR / CALCULADORA DE DESCONTO ================= -->
-  <section class="section simulador-section" id="simulador">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Calculadora de Desconto</span>
-        <h2>Simule sua <em>economia anual</em> em segundos.</h2>
-        <p>Arraste o controle abaixo até o valor médio da sua conta de luz e veja, na hora, quanto você deixaria de pagar todos os meses com a iGreen.</p>
-      </div>
-
-      <div class="simulador-card reveal">
-        <div class="simulador-slider-col">
-          <label class="sim-label" for="simConta">Valor médio da sua conta de luz atual</label>
-          <div class="sim-value" id="simContaValor">R$ 600</div>
-          <input type="range" id="simConta" class="sim-range" min="100" max="2000" step="10" value="600" aria-describedby="simContaValor">
-          <div class="sim-range-labels"><span>R$ 100</span><span>R$ 2.000</span></div>
-        </div>
-
-        <div class="simulador-results-col">
-          <div class="qs-fact sim-result">
-            <div class="qs-num" id="simMensal">R$ 90</div>
-            <div class="qs-lbl">Economia estimada por mês</div>
-          </div>
-          <div class="qs-fact sim-result sim-result-highlight">
-            <div class="qs-num" id="simAnual">R$ 1.080</div>
-            <div class="qs-lbl">Economia estimada por ano</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="sim-cta-row reveal">
-        <a href="#vamos-economizar" class="btn btn-primary">Quero ativar meu desconto</a>
-        <span class="sim-disclaimer">Simulação com base em desconto médio de 15%. O percentual final depende da sua distribuidora e perfil de consumo.</span>
-      </div>
     </div>
   </section>
 
