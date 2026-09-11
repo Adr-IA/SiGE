@@ -146,6 +146,47 @@
   }
   nav.top-nav a:hover{color:var(--accent); background:var(--accent-soft); border-color:var(--border-hover);}
   nav.top-nav a.active{color:#04250a; background:var(--accent);}
+
+  /* ---------- TICKER ---------- */
+  .ticker-wrap{
+    overflow:hidden;
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    height:34px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    z-index:49;
+  }
+  .ticker-track{
+    display:flex;
+    align-items:center;
+    white-space:nowrap;
+    width:max-content;
+    animation:ticker-scroll 55s linear infinite;
+    will-change:transform;
+  }
+  .ticker-wrap:hover .ticker-track{animation-play-state:paused;}
+  .ticker-word{
+    color:var(--accent);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.03em;
+    margin:0 16px;
+    opacity:.85;
+  }
+  .ticker-sep{
+    color:var(--accent);
+    font-size:11px;
+    opacity:.55;
+  }
+  @keyframes ticker-scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{animation:none;}
+  }
   .header-cta{
     display:inline-flex; align-items:center; gap:8px;
     background:var(--accent); color:#04250a;
@@ -619,6 +660,12 @@
     </nav>
   </div>
 </header>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-word">Energia Solar</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Telecom</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Seguro Auto</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Empreendedorismo</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Clube de Benefícios</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Mercado Livre de Energia</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Soluções Inteligentes</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Sustentabilidade</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Economia</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Tecnologia</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Inovação</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Economia Real</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Energia Solar</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Telecom</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Seguro Auto</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Empreendedorismo</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Clube de Benefícios</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Mercado Livre de Energia</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Soluções Inteligentes</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Sustentabilidade</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Economia</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Tecnologia</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Inovação</span><span class="ticker-sep" aria-hidden="true">&#9889;</span><span class="ticker-word">Economia Real</span><span class="ticker-sep" aria-hidden="true">&#9889;</span>
+  </div>
+</div>
 
 <main id="topo">
 
