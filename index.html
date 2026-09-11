@@ -56,7 +56,11 @@
 
   *{box-sizing:border-box; margin:0; padding:0;}
 
-  html{scroll-behavior:smooth;}
+  html{
+    scroll-behavior:smooth;
+    overflow-x:hidden;
+    scroll-padding-top:90px;
+  }
 
   body{
     background:var(--bg);
@@ -64,7 +68,6 @@
     font-family:'Poppins', sans-serif;
     -webkit-font-smoothing:antialiased;
     line-height:1.5;
-    overflow-x:hidden;
   }
 
   body::before{
@@ -341,6 +344,7 @@
     .featured-benefits{grid-template-columns:1fr;}
   }
   @media (max-width: 680px){
+    html{scroll-padding-top:132px;}
     .solutions-grid{grid-template-columns:1fr;}
     .stat-strip{grid-template-columns:repeat(2,1fr);}
     .stat-strip > div:nth-child(2){border-right:none;}
