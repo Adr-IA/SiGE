@@ -597,6 +597,55 @@
     .whatsapp-qr{width:76px; height:76px;}
   }
 
+  /* ---------- FAQ ---------- */
+  .faq-tabs{display:flex; gap:10px; margin-bottom:36px; flex-wrap:wrap;}
+  .faq-tab{
+    font-family:inherit; font-size:13.5px; font-weight:700; color:var(--text-muted);
+    background:var(--card); border:1px solid var(--border);
+    padding:10px 20px; border-radius:999px; cursor:pointer;
+    transition:border-color .2s, color .2s, background .2s;
+  }
+  .faq-tab:hover{border-color:var(--border-hover); color:var(--text);}
+  .faq-tab.active{color:#04250a; background:var(--accent); border-color:var(--accent);}
+
+  .faq-panel{display:none;}
+  .faq-panel.active{display:block;}
+
+  .faq-group{margin-bottom:36px;}
+  .faq-group:last-child{margin-bottom:0;}
+  .faq-group-title{
+    font-size:12px; font-weight:800; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:14px;
+  }
+
+  .faq-item{
+    border:1px solid var(--border); border-radius:14px;
+    background:var(--card);
+    margin-bottom:10px;
+    overflow:hidden;
+  }
+  .faq-question{
+    width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    text-align:left; background:none; border:none; cursor:pointer;
+    padding:18px 20px;
+    font-family:inherit; font-size:14.5px; font-weight:600; color:var(--text); line-height:1.4;
+  }
+  .faq-icon{width:18px; height:18px; flex:0 0 auto; color:var(--accent); transition:transform .25s ease;}
+  .faq-item.open .faq-icon{transform:rotate(180deg);}
+  .faq-answer{
+    max-height:0; overflow:hidden;
+    transition:max-height .3s ease;
+    padding:0 20px;
+  }
+  .faq-item.open .faq-answer{padding:0 20px 18px;}
+  .faq-answer p{font-size:13.5px; color:var(--text-muted); line-height:1.6;}
+  .faq-answer p strong{color:var(--text); font-weight:700;}
+  @media (max-width: 560px){
+    .faq-question{font-size:13.5px; padding:15px 16px;}
+    .faq-answer{padding:0 16px;}
+    .faq-item.open .faq-answer{padding:0 16px 15px;}
+  }
+
   /* ---------- SITE OFICIAL ---------- */
   .official-site{
     padding:0 24px 96px;
@@ -654,6 +703,7 @@
       <a href="#simulador">Simulador</a>
       <a href="#solucoes">Soluções</a>
       <a href="#app">App</a>
+      <a href="#faq">FAQ</a>
       <!--<a href="#premios">Prêmios</a>-->
       <a href="#vamos-economizar">Fale Conosco</a>
     </nav>
@@ -1036,6 +1086,457 @@
     </div>
   </section>
 
+  <!-- ================= FAQ ================= -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Perguntas <em>frequentes</em></h2>
+        <p>Tire suas dúvidas sobre nossas soluções e sobre a oportunidade de ser um Licenciado Autorizado iGreen.</p>
+      </div>
+
+      <div class="faq-tabs" role="tablist">
+        <button class="faq-tab active" type="button" data-target="faq-clientes">Para Clientes</button>
+        <button class="faq-tab" type="button" data-target="faq-licenciados">Para Licenciados</button>
+      </div>
+
+        <div class="faq-panel active" id="faq-clientes">
+          <div class="faq-group">
+            <h3 class="faq-group-title">Conexão Green (Energia por Assinatura)</h3>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O que é a Conexão Green da iGreen Energy Solutions?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>É a oportunidade de consumir energia solar limpa e garantir desconto mensal na sua conta de luz, utilizando os créditos produzidos em nossas usinas solares e injetados na rede da sua distribuidora local.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Preciso pagar alguma taxa de adesão ou fazer obras no meu imóvel?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Não! A adesão é 100% gratuita. Não há taxa de cadastro, sem obras e sem necessidade de comprar painéis solares.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O desconto na conta de luz é garantido todo mês?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Sim! O desconto é aplicado mensalmente sobre a tarifa da energia injetada pela iGreen.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Como funciona o Bônus de Indicação e como posso ZERAR minha conta de luz?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Sempre que você indica um amigo que se conecta à iGreen, você ganha R$ 20,00 de Bônus Imediato mais 2% de Cashback Recorrente sobre a fatura paga por ele todo mês. Ao indicar amigos com consumo similar ao seu, o cashback acumulado cobre 100% do seu boleto, permitindo zerar sua conta sem tirar nada do bolso.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Como utilizo o saldo do cashback acumulado pelas indicações?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>O dinheiro do cashback acumula direto no seu aplicativo iGreen e você pode usá-lo para abater e pagar a sua própria fatura de energia.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Vou cancelar minha ligação com a concessionária de energia local?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Não. A distribuidora local continua responsável pela entrega física da energia, manutenção da fiação, postes e cobrança de taxas obrigatórias (como iluminação pública).</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Como receberei minha conta de energia?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>A depender da sua região, você receberá um boleto único (unificando a taxa da distribuidora e o desconto iGreen) ou dois boletos (um da distribuidora com tarifas fixas e outro da iGreen com a energia limpa injetada com desconto).</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O serviço da Conexão Green possui fidelidade ou taxa de cancelamento?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Nenhuma! Não há prazo de fidelidade e você pode cancelar o benefício quando quiser, sem multas.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Qual é o prazo para o desconto de energia solar começar a vir na minha conta?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>O prazo regulatório da distribuidora para homologação e injeção de créditos leva de 90 a 120 dias (3 a 4 meses) após a aprovação do cadastro.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O que eu ganho enquanto aguardo o prazo de 90 a 120 dias da distribuidora?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Você ganha acesso imediato e 100% gratuito ao <strong>iGreen Club</strong>, podendo economizar em farmácias, supermercados, cinemas e restaurantes desde o primeiro dia!</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Qual o consumo mínimo para poder aderir à Conexão Green?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Seu consumo médio deve ser acima de 130 kWh (monofásico), 150 kWh (bifásico) ou 200 kWh (trifásico), variando conforme a concessionária local.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Quais documentos preciso enviar para ativar meu desconto na luz?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Apenas uma foto legível da sua última conta de luz, foto do seu documento de identidade (RG ou CNH frente e verso), seu e-mail e número de WhatsApp.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Se acabar a energia na minha rua, quem eu devo acionar?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Você deve acionar a sua distribuidora local de energia, pois a manutenção da rede física e cabos continua sendo responsabilidade exclusiva dela.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Posso cadastrar mais de uma conta de luz no meu CPF ou CNPJ?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Sim! Você pode cadastrar sua casa, apartamento, imóvel comercial ou casa de praia e obter descontos em todas as faturas elegíveis.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-group">
+            <h3 class="faq-group-title">Conexão Placas & Conexão Solar (Geração no Telhado)</h3>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Qual a diferença entre a Conexão Placas e a Conexão Solar?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Na <strong>Conexão Placas</strong>, você compra o sistema fotovoltaico próprio (investimento seu) para economizar até 95% na conta. Na <strong>Conexão Solar (Comodato)</strong>, a iGreen aluga seu telhado e instala o sistema com investimento 100% da empresa; você ganha desconto na luz durante o contrato e, após 5 a 6 anos, as placas tornam-se 100% suas sem nenhum custo adicional.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Preciso pegar financiamento bancário para ter a Conexão Solar (Comodato)?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Não! A iGreen banca 100% do projeto com capital próprio, eliminando a necessidade de empréstimos ou investimento inicial do cliente.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O que acontece ao final dos 5 a 6 anos do contrato da Conexão Solar?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>As placas e todo o sistema são transferidos gratuitamente para o seu nome, e você passa a gerar energia 100% gratuita no seu imóvel!</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>É possível instalar baterias junto com as placas solares na Conexão Placas?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Sim! Oferecemos integração de painéis com sistemas de baterias de armazenamento para garantir energia limpa 24h por dia e autonomia nos horários de pico.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-group">
+            <h3 class="faq-group-title">Conexão Telecom (Celular e Dados Móveis)</h3>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O que é a iGreen Telecom e qual a cobertura de sinal?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>É a operadora de telefonia móvel virtual da iGreen com cobertura nacional em 4G e 5G utilizando as maiores redes do Brasil.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Como posso ZERAR minha conta de celular com a iGreen Telecom?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Ao indicar amigos para a iGreen Telecom, você ganha R$ 3,50 de cashback mensal por cada plano ativo. No plano de R$ 54,90, indicando 16 amigos você recebe R$ 56,00 por mês, zerando totalmente o custo da sua fatura!</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O que acontece com os Gigas de internet que eu não utilizar no mês?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Na iGreen Telecom a internet não utilizada não é perdida: ela acumula para o mês seguinte!</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>A iGreen Telecom possui contrato de fidelidade ou consulta ao SPC/Serasa?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Nenhuma fidelidade e sem consulta ao SPC/Serasa. Você tem total controle dos seus planos sem multas de cancelamento.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Posso manter o meu número de telefone atual (portabilidade)?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Sim! A portabilidade é gratuita e rápida, mantendo o seu número exatamente como está.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-group">
+            <h3 class="faq-group-title">Conexão Seguros (iGreen Seguros)</h3>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O iGreen Seguros é regulamentado pela SUSEP?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Sim! É operado em parceria oficial com a <strong>BP Seguradora S.A.</strong>, regulamentada sob o código SUSEP 01546.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Como funciona o pagamento do seguro veicular?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>O pagamento é mensal via boleto bancário no estilo assinatura (como streaming), sem comprometer o limite do seu cartão de crédito.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Negativados e motoristas de aplicativo podem contratar o seguro?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Sim! Aceitamos negativados e motoristas de aplicativo.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Quais são as coberturas inclusas no seguro de carro e moto?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Roubo, furto, colisão, danos a terceiros, guincho/assistência 24h, cobertura de vidros e opção de carro reserva.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Qual o benefício especial para quem é cliente de energia e contrata o seguro?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>O cliente ganha o pagamento de <strong>1 boleto de energia iGreen de até R$ 300,00</strong>, praticamente ganhando 1 mês de seguro grátis!</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-group">
+            <h3 class="faq-group-title">Conexão Livre, Conexão Mobi e iGreen Club</h3>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O que é a Conexão Livre para empresas de alta tensão?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>É a migração de indústrias e empresas do Grupo A para o Mercado Livre de Energia, garantindo até 30% de desconto mensal na conta sem custos de infraestrutura.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O que é a Conexão Mobi?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>É a nossa solução para carregadores elétricos e eletromobilidade. Está em fase final de desenvolvimento e breve lançamento oficial, com atualização em breve.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O que é o iGreen Club e como faço para acessar?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>É um clube de benefícios por geolocalização com descontos de até 90% em todo o Brasil. Para acessar, basta baixar o aplicativo <strong>iGreen Club</strong> diretamente na Google Play Store ou Apple App Store.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-panel" id="faq-licenciados">
+          <div class="faq-group">
+            <h3 class="faq-group-title">Modelo de Negócios e Licenças</h3>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Como funciona o trabalho de um Licenciado Autorizado iGreen?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>O licenciado atua como um consultor de sustentabilidade e economia, oferecendo soluções de energia solar, telefonia e seguros, construindo ganhos diários e renda recorrente mensal.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Quais são as opções de licença para iniciar o negócio?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>A Licença Connect Plus custa R$ 997,00 (ou 12x R$ 97,00) e a Licença Connect Full custa R$ 1.997,00 (ou 12x R$ 197,41).</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>As licenças dão direito a cupons para compras de produtos?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Sim! A Licença Connect Full concede um Voucher de R$ 100,00 e a Connect Plus concede um Voucher de R$ 50,00 para compras na iGreen Store após a primeira conexão.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Preciso ter experiência prévia para trabalhar como Licenciado?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Não! Disponibilizamos a plataforma oficial de treinamentos <strong>Green Academy (SIGA)</strong> com capacitação técnica e comercial completa.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-group">
+            <h3 class="faq-group-title">Ganhos, Bônus e Campanhas</h3>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Quanto um Licenciado ganha na Conexão Green (Energia Solar)?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Ganho recorrente mensal de <strong>até 4% de Geração Própria (GP)</strong> sobre o valor faturado dos seus clientes diretos, mais ganhos indiretos de até 2% e Royalties.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O que é a Campanha Bônus Turbo e como faturar R$ 10.000,00 no mês?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Em concessionárias ativas na campanha, ao conectar 100 clientes no mês, a iGreen paga um Bônus Imediato de R$ 100,00 por cliente (R$ 10.000,00 no total), além da comissão recorrente perpétua!</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Quanto ganho ao vender a Conexão Placas e a Conexão Solar (Comodato)?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Na <strong>Conexão Placas</strong>, você recebe 10% de comissão direta sobre o valor total do projeto. Na <strong>Conexão Solar (Comodato)</strong>, você ganha 2% de GP recorrente por todo o contrato + Bônus Extra de 50% na primeira fatura paga do cliente.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O que é o sistema de Closer e como ele me ajuda nas vendas?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Se você for um novo licenciado e precisar de ajuda para fechar negociações de Placas ou Seguros, a equipe de especialistas da iGreen (Closer) assume e fecha a venda com o seu cliente, dividindo a comissão em 50%.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Quanto o Licenciado recebe na Conexão Telecom e Seguros?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Na Telecom, você ganha R$ 7,00 mensais por plano ativo + R$ 10,00 por chip físico ativado. Na Seguros, ganha 5% de comissão GP recorrente sobre cada mensalidade + bônus imediato de até 100%.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Quanto recebo ao indicar novos licenciados para a iGreen?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Na Conexão Expansão, você recebe R$ 300,00 por indicação de Licença Connect Full (mais R$ 100,00 PRO) e R$ 150,00 por Licença Connect Plus.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-group">
+            <h3 class="faq-group-title">Qualificação, Prazos e Validade Legal</h3>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Como mantenho meu Status PRO ativo?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Basta manter 5 conexões Green/Telecom, 2 conexões Seguros ou 1 conexão de Mercado Livre/Placas ativas no mês.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>O que é a meta GREEN de 5 conexões diretas?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Ao conectar os 5 primeiros clientes no mês (Green, Portabilidade Telecom ou Seguros), você se torna GREEN, recebe <strong>1.000 pontos EXTRA</strong> na sua qualificação e ativa a liberação de saques na sua conta.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Onde acompanho minhas vendas e comissões?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Tudo é gerenciado em tempo real pelo aplicativo <strong>App iGreen Connect</strong>.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>A iGreen Energy é uma empresa legalizada?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer">
+                <p>Sim, totalmente legalizada. Atua respaldada pelo Marco Legal da Geração Distribuída (Lei 14.300), conta com parceria oficial do grupo Vibra/Comerc e parceria oficial com a BP Seguradora S.A. (SUSEP 01546).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
   <!-- ================= LINK PARA O SITE OFICIAL ================= -->
   <section class="official-site">
     <div class="wrap">
@@ -1133,6 +1634,38 @@
     });
   }, {rootMargin: '-45% 0px -50% 0px', threshold: 0});
   sections.forEach(function(s){ navObserver.observe(s); });
+
+  // FAQ: alterna entre as abas "Para Clientes" e "Para Licenciados"
+  var faqTabs = Array.from(document.querySelectorAll('.faq-tab'));
+  var faqPanels = Array.from(document.querySelectorAll('.faq-panel'));
+  faqTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      faqTabs.forEach(function(t){ t.classList.remove('active'); });
+      faqPanels.forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      var target = document.getElementById(tab.getAttribute('data-target'));
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // FAQ: abre/fecha a resposta ao clicar na pergunta; só uma fica aberta por vez
+  var faqItems = Array.from(document.querySelectorAll('.faq-item'));
+  faqItems.forEach(function(item){
+    var question = item.querySelector('.faq-question');
+    var answer = item.querySelector('.faq-answer');
+    question.addEventListener('click', function(){
+      var wasOpen = item.classList.contains('open');
+      faqItems.forEach(function(other){
+        other.classList.remove('open');
+        other.querySelector('.faq-answer').style.maxHeight = null;
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
 </script>
 
 </body>
