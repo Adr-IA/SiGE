@@ -606,10 +606,64 @@
     transition:border-color .2s, color .2s, background .2s;
   }
   .faq-tab:hover{border-color:var(--border-hover); color:var(--text);}
-  .faq-tab.active{color:#04250a; background:var(--accent); border-color:var(--accent);}
 
-  .faq-panel{display:none;}
-  .faq-panel.active{display:block;}
+  .faq-modal{
+    display:none;
+    position:fixed; inset:0; z-index:200;
+    align-items:center; justify-content:center;
+    padding:24px;
+  }
+  .faq-modal.open{display:flex;}
+  .faq-modal-backdrop{
+    position:absolute; inset:0;
+    background:rgba(4,10,6,0.72);
+    backdrop-filter:blur(2px);
+  }
+  .faq-modal-box{
+    position:relative;
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:20px;
+    width:100%; max-width:720px;
+    max-height:min(80vh, 760px);
+    display:flex; flex-direction:column;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    animation:faq-modal-in .22s ease;
+  }
+  @keyframes faq-modal-in{
+    from{opacity:0; transform:translateY(12px) scale(.98);}
+    to{opacity:1; transform:translateY(0) scale(1);}
+  }
+  .faq-modal-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 24px;
+    border-bottom:1px solid var(--border);
+    flex:0 0 auto;
+  }
+  .faq-modal-head h3{font-size:16px; font-weight:800; color:var(--text);}
+  .faq-modal-close{
+    display:flex; align-items:center; justify-content:center;
+    width:34px; height:34px; border-radius:50%;
+    background:var(--card); border:1px solid var(--border); color:var(--text-muted);
+    cursor:pointer;
+  }
+  .faq-modal-close:hover{color:var(--accent); border-color:var(--accent);}
+  .faq-modal-close svg{width:16px; height:16px;}
+  .faq-modal-body{
+    padding:24px; overflow-y:auto; flex:1 1 auto;
+  }
+  @media (max-width: 680px){
+    .faq-modal{padding:0; align-items:flex-end;}
+    .faq-modal-box{
+      max-width:100%; max-height:92vh;
+      border-radius:20px 20px 0 0;
+      animation:faq-modal-in-mobile .22s ease;
+    }
+    @keyframes faq-modal-in-mobile{
+      from{opacity:0; transform:translateY(30px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+  }
 
   .faq-group{margin-bottom:36px;}
   .faq-group:last-child{margin-bottom:0;}
@@ -1072,11 +1126,22 @@
       </div>
 
       <div class="faq-tabs" role="tablist">
-        <button class="faq-tab active" type="button" data-target="faq-clientes">Para Clientes</button>
-        <button class="faq-tab" type="button" data-target="faq-licenciados">Para Licenciados</button>
+        <button class="faq-tab" type="button" data-modal="faq-modal-clientes">Para Clientes</button>
+        <button class="faq-tab" type="button" data-modal="faq-modal-licenciados">Para Licenciados</button>
       </div>
+    </div>
+  </section>
 
-        <div class="faq-panel active" id="faq-clientes">
+  <div class="faq-modal" id="faq-modal-clientes" aria-hidden="true">
+    <div class="faq-modal-backdrop" data-faq-close></div>
+    <div class="faq-modal-box" role="dialog" aria-modal="true" aria-labelledby="faq-modal-clientes-title">
+      <div class="faq-modal-head">
+        <h3 id="faq-modal-clientes-title">Para Clientes</h3>
+        <button class="faq-modal-close" type="button" data-faq-close aria-label="Fechar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="faq-modal-body">
           <div class="faq-group">
             <h3 class="faq-group-title">Conexão Green (Energia por Assinatura)</h3>
             <div class="faq-item">
@@ -1371,10 +1436,21 @@
               </div>
             </div>
           </div>
-        </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="faq-panel" id="faq-licenciados">
-          <div class="faq-group">
+<div class="faq-modal" id="faq-modal-licenciados" aria-hidden="true">
+  <div class="faq-modal-backdrop" data-faq-close></div>
+  <div class="faq-modal-box" role="dialog" aria-modal="true" aria-labelledby="faq-modal-licenciados-title">
+    <div class="faq-modal-head">
+      <h3 id="faq-modal-licenciados-title">Para Licenciados</h3>
+      <button class="faq-modal-close" type="button" data-faq-close aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="faq-modal-body">
+        <div class="faq-group">
             <h3 class="faq-group-title">Modelo de Negócios e Licenças</h3>
             <div class="faq-item">
               <button class="faq-question" type="button">
@@ -1509,9 +1585,9 @@
               </div>
             </div>
           </div>
-        </div>
+      </div>
     </div>
-  </section>
+  </div>
 
 
   <!-- ================= CTA FINAL ================= -->
@@ -1636,27 +1712,53 @@
   }, {rootMargin: '-45% 0px -50% 0px', threshold: 0});
   sections.forEach(function(s){ navObserver.observe(s); });
 
-  // FAQ: alterna entre as abas "Para Clientes" e "Para Licenciados"
+  // FAQ: abre o popup correspondente ao clicar em "Para Clientes" / "Para Licenciados"
   var faqTabs = Array.from(document.querySelectorAll('.faq-tab'));
-  var faqPanels = Array.from(document.querySelectorAll('.faq-panel'));
+  var faqModals = Array.from(document.querySelectorAll('.faq-modal'));
+
+  function openFaqModal(modal){
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeFaqModal(modal){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  function closeAllFaqModals(){
+    faqModals.forEach(closeFaqModal);
+  }
+
   faqTabs.forEach(function(tab){
     tab.addEventListener('click', function(){
-      faqTabs.forEach(function(t){ t.classList.remove('active'); });
-      faqPanels.forEach(function(p){ p.classList.remove('active'); });
-      tab.classList.add('active');
-      var target = document.getElementById(tab.getAttribute('data-target'));
-      if (target) target.classList.add('active');
+      var modal = document.getElementById(tab.getAttribute('data-modal'));
+      if (modal) openFaqModal(modal);
     });
   });
 
-  // FAQ: abre/fecha a resposta ao clicar na pergunta; só uma fica aberta por vez
+  // Fecha ao clicar no X ou no fundo escurecido
+  document.querySelectorAll('[data-faq-close]').forEach(function(el){
+    el.addEventListener('click', function(){
+      closeAllFaqModals();
+    });
+  });
+
+  // Fecha com a tecla Esc
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeAllFaqModals();
+  });
+
+  // FAQ: abre/fecha a resposta ao clicar na pergunta; só uma fica aberta por vez (dentro de cada popup)
   var faqItems = Array.from(document.querySelectorAll('.faq-item'));
   faqItems.forEach(function(item){
     var question = item.querySelector('.faq-question');
     var answer = item.querySelector('.faq-answer');
     question.addEventListener('click', function(){
       var wasOpen = item.classList.contains('open');
-      faqItems.forEach(function(other){
+      var modalBody = item.closest('.faq-modal-body');
+      var scope = modalBody ? Array.from(modalBody.querySelectorAll('.faq-item')) : faqItems;
+      scope.forEach(function(other){
         other.classList.remove('open');
         other.querySelector('.faq-answer').style.maxHeight = null;
       });
