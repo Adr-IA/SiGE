@@ -22,13 +22,23 @@
 <script>
   window.LICENCIADO_LINKS = {
     livre:      "https://livre.igreenenergy.com.br/?ref=6aa1c970-3930-4c6b-8708-11cc9ea710f4",
-    green:      "https://green.igreenenergy.com.br/autoconexao/?id=170053&promo=greenfriday",
+    green:      "https://green.igreenenergy.com.br/?id=170053",   // link padrão (válido a partir de 01/12/2026)
     placas:     "https://wa.me/5531999389862?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Conex%C3%A3o%20Placas",
     solar:      "https://wa.me/5531999389862?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Conex%C3%A3o%20Solar%20%28comodato%29.",
     telecom:    "https://telecom.igreenenergy.com.br/?id=6aa1c970-3930-4c6b-8708-11cc9ea710f4",
     seguros:    "https://seguros.igreenenergy.com.br?t=FFUUPpJ2qICwL6s6AikdMjTdejo90p0KvX8_V6Xv7So5V_bhjwQ",
-    licenciado: "https://expansao.igreenenergy.com.br/?id=170053&checkout=true&tipolicenca=CONNECT"
+    licenciado: "https://expansao.igreenenergy.com.br/?id=170053&checkout=true&tipolicenca=CONNECT",
+    mob:        "https://igreenmob.com.br/?ref=6aa1c970%2D3930%2D4c6b%2D8708%2D11cc9ea710f4"
   };
+
+  // Promoção Green Friday: em novembro de 2026 a Conexão Green usa o link promocional.
+  // A partir de 01/12/2026 (horário de Brasília) volta automaticamente ao link padrão acima.
+  (function(){
+    var partes = new Intl.DateTimeFormat('en-CA', {timeZone:'America/Sao_Paulo', year:'numeric', month:'2-digit'}).format(new Date()).split('-');
+    if (partes[0] === '2026' && partes[1] === '11') {
+      window.LICENCIADO_LINKS.green = "https://green.igreenenergy.com.br/autoconexao/?id=170053&promo=greenfriday";
+    }
+  })();
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -381,15 +391,16 @@
     padding:4px 10px; border-radius:6px; margin-bottom:16px;
   }
   .sol-icon{
-    width:46px; height:46px;
+    width:69px; height:69px;
+    align-self:center;
     display:flex; align-items:center; justify-content:center;
     border-radius:12px;
     background:linear-gradient(160deg, var(--accent-soft), transparent);
     border:1px solid var(--border-hover);
     margin-bottom:18px;
   }
-  .sol-icon svg{width:24px; height:24px; stroke:var(--accent);}
-  .sol-icon img{width:26px; height:26px; object-fit:contain;}
+  .sol-icon svg{width:36px; height:36px; stroke:var(--accent);}
+  .sol-icon img{width:39px; height:39px; object-fit:contain;}
   .sol-card h3{font-size:20px; font-weight:700; margin-bottom:10px;}
   .sol-card p.desc{font-size:14px; color:var(--text-muted); margin-bottom:18px; flex-grow:0;}
   .sol-benefits{margin-bottom:24px; display:flex; flex-direction:column; gap:9px;}
@@ -922,11 +933,11 @@
 
         <!-- Conexão Livre -->
         <article class="sol-card reveal" data-solucao="livre">
-          <span class="sol-tag">Grandes Empresas (Alta Tensão)</span>
           <div class="sol-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
           </div>
           <h3>Conexão Livre</h3>
+          <span class="sol-tag">Grandes Empresas (Alta Tensão)</span>
           <p class="desc">Reduza os custos de energia da sua empresa sem investimento. A iGreen cuida de toda a migração para o Mercado Livre de Energia.</p>
           <ul class="sol-benefits">
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Economia de até 30% na conta de energia</li>
@@ -942,11 +953,11 @@
 
         <!-- Conexão Green -->
         <article class="sol-card reveal" data-solucao="green">
-          <span class="sol-tag">Residências &amp; PMEs</span>
           <div class="sol-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 3.5 18.5 2c0 6-1 9-4 11a7 7 0 0 1-3.5 7z"/><path d="M2 22c0-4 2.5-7 6-8"/></svg>
           </div>
           <h3>Conexão Green</h3>
+          <span class="sol-tag">Residências &amp; PMEs</span>
           <p class="desc">Economize na conta de energia sem investimento e sem burocracia — ideal para residências e pequenas empresas.</p>
           <ul class="sol-benefits">
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Residências desconto de até 15%</li>
@@ -963,11 +974,11 @@
 
         <!-- Conexão Placas -->
         <article class="sol-card reveal" data-solucao="placas">
-          <span class="sol-tag">Geração própria</span>
           <div class="sol-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="8" height="6"/><rect x="13" y="4" width="8" height="6"/><rect x="3" y="12" width="8" height="6"/><rect x="13" y="12" width="8" height="6"/><path d="M12 18v3M9 21h6"/></svg>
           </div>
           <h3>Conexão Placas</h3>
+          <span class="sol-tag">Geração própria</span>
           <p class="desc">Gere sua própria energia solar com segurança e eficiência. A iGreen cuida do projeto, instalação e suporte.</p>
           <ul class="sol-benefits">
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Atuação em todo o Brasil</li>
@@ -983,11 +994,11 @@
 
         <!-- Conexão Solar -->
         <article class="sol-card reveal" data-solucao="solar">
-          <span class="sol-tag">Geração própria (Comodato)</span>
           <div class="sol-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
           </div>
           <h3>Conexão Solar</h3>
+          <span class="sol-tag">Geração própria (Comodato)</span>
           <p class="desc">Tenha energia solar sem investimento inicial. A iGreen instala os painéis e, ao fim do contrato, o sistema passa a ser seu.</p>
           <ul class="sol-benefits">
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Atuação em todo o Brasil</li>
@@ -1002,11 +1013,11 @@
 
         <!-- Conexão Telecom -->
         <article class="sol-card reveal" data-solucao="telecom">
-          <span class="sol-tag">Telefonia e Dados Móveis</span>
           <div class="sol-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1.2" fill="#0aff1f" stroke="none"/></svg>
           </div>
           <h3>Conexão Telecom</h3>
+          <span class="sol-tag">Telefonia e Dados Móveis</span>
           <p class="desc">Planos de telefonia justos e internet de alta velocidade, com cobertura 5G para você ficar sempre conectado.</p>
           <ul class="sol-benefits">
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sem fidelidade</li>
@@ -1022,11 +1033,11 @@
 
         <!-- Conexão Seguros -->
         <article class="sol-card reveal" data-solucao="seguros">
-          <span class="sol-tag">Proteção Auto</span>
           <div class="sol-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5l-8-3z"/><path d="m9.5 12 1.8 1.8L15 10"/></svg>
           </div>
           <h3>Conexão Seguros</h3>
+          <span class="sol-tag">Proteção Auto</span>
           <p class="desc">Segurança para você e seu carro contra os imprevistos do dia a dia, com pagamento mensal e sem burocracia.</p>
           <ul class="sol-benefits">
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Proteção anual ou mensal</li>
@@ -1036,6 +1047,23 @@
           </ul>
           <div class="cta-row">
             <a class="sol-btn" data-key="seguros" href="#" target="_blank" rel="noopener">Proteger meu Auto</a>
+          </div>
+        </article>
+
+        <!-- Conexão Mob -->
+        <article class="sol-card reveal" data-solucao="mob">
+          <div class="sol-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v18"/><path d="M3 22h12"/><path d="M14 12h2a2 2 0 0 1 2 2v3a2 2 0 0 0 4 0V9l-3-3"/><path d="M9.5 6 7.5 10h3l-2 4"/></svg>
+          </div>
+          <h3>Conexão Mob</h3>
+          <span class="sol-tag">Eletromobilidade</span>
+          <p class="desc">A solução iGreen para mobilidade elétrica, conectando eletropostos e recargas em um único ecossistema.</p>
+          <ul class="sol-benefits">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Eletropostos com opções de 7kW, 40kW e 80kW</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Aplicativo para localizar, iniciar e acompanhar recargas</li>
+          </ul>
+          <div class="cta-row">
+            <a class="sol-btn" data-key="mob" href="#" target="_blank" rel="noopener">Quero um eletroposto</a>
           </div>
         </article>
 
@@ -1413,7 +1441,7 @@
             </div>
           </div>
           <div class="faq-group">
-            <h3 class="faq-group-title">Conexão Livre, Conexão Mobi e iGreen Club</h3>
+            <h3 class="faq-group-title">Conexão Livre, Conexão Mob e iGreen Club</h3>
             <div class="faq-item">
               <button class="faq-question" type="button">
                 <span>O que é a Conexão Livre para empresas de alta tensão?</span>
@@ -1425,11 +1453,11 @@
             </div>
             <div class="faq-item">
               <button class="faq-question" type="button">
-                <span>O que é a Conexão Mobi?</span>
+                <span>O que é a Conexão Mob?</span>
                 <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
               </button>
               <div class="faq-answer">
-                <p>É a nossa solução para carregadores elétricos e eletromobilidade. Está em fase final de desenvolvimento e breve lançamento oficial, com atualização em breve.</p>
+                <p>É a nossa solução para carregadores elétricos e eletromobilidade: você investe em um eletroposto iGreen e recebe por cada recarga.</p>
               </div>
             </div>
             <div class="faq-item">
